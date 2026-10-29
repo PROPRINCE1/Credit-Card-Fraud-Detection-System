@@ -1,0 +1,47 @@
+{
+  "version": "synthetic-demo-v2",
+  "threshold": 0.575,
+  "features": [
+    "distance_from_home",
+    "distance_from_last_transaction",
+    "ratio_to_median_purchase_price",
+    "repeat_retailer",
+    "used_chip",
+    "used_pin_number",
+    "online_order"
+  ],
+  "metrics": {
+    "accuracy": 0.8353,
+    "roc_auc": 0.7797,
+    "precision": 0.379,
+    "recall": 0.448,
+    "f1": 0.411,
+    "pr_auc": 0.396,
+    "confusion_matrix": [
+      [
+        5835,
+        705
+      ],
+      [
+        530,
+        430
+      ]
+    ],
+    "test_samples": 7500
+  },
+  "training_source": "synthetic generated data",
+  "warning": "DEMO ONLY. Not validated on real credit-card fraud.",
+  "samples": 50000,
+  "seed": 42,
+  "split_samples": {
+    "train": 35000,
+    "validation": 7500,
+    "test": 7500
+  },
+  "label_fraud_rate": 0.12802,
+  "trained_at": "2026-10-29T11:50:13.893502+00:00",
+  "sklearn_version": "1.8.0",
+  "python_version": "3.12.10",
+  "model_sha256": "47fcf5015d710bd28711732b91b7baa7381d91ddc5fe10136ed43e40f1dd2be0",
+  "threshold_selection": "Best validation F1; test set used only for final evaluation"
+}
