@@ -48,3 +48,5 @@ Thumbs.db
 data/raw/
 data/processed/
 *.log
+# Reproducible demo exports
+database/generated/

@@ -1,3 +1,5 @@
+> **Supabase / 20,000-transaction setup:** Start with [README_SUPABASE.md](README_SUPABASE.md). The original small SQLite demo instructions below are retained for reference.
+
 # CreditGuard AI — Credit Card Fraud Detection Dashboard
 
 A **working educational full-stack demonstration** with a React dashboard, FastAPI backend, SQLAlchemy database, and scikit-learn fraud classifier.

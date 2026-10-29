@@ -1,5 +1,5 @@
 from datetime import datetime, timezone
-from sqlalchemy import Column, Integer, String, Float, Boolean, DateTime, ForeignKey, JSON, Text
+from sqlalchemy import Column, Integer, String, Float, Boolean, DateTime, ForeignKey, JSON, Text, Index
 from sqlalchemy.orm import relationship
 from .database import Base
 
@@ -15,6 +15,8 @@ class Customer(Base):
 
 class Transaction(Base):
     __tablename__='transactions'
+    __table_args__ = (Index('ix_transactions_created_id', 'created_at', 'id'),
+                      Index('ix_transactions_customer_created', 'customer_id', 'created_at'))
     id=Column(Integer,primary_key=True)
     customer_id=Column(Integer,ForeignKey('customers.id'),nullable=False,index=True)
     amount=Column(Float,nullable=False)
@@ -36,6 +38,7 @@ class Transaction(Base):
 
 class Prediction(Base):
     __tablename__='predictions'
+    __table_args__ = (Index('ix_predictions_fraud_transaction', 'predicted_fraud', 'transaction_id'),)
     id=Column(Integer,primary_key=True)
     transaction_id=Column(Integer,ForeignKey('transactions.id'),unique=True,nullable=False)
     fraud_probability=Column(Float,nullable=False)
@@ -47,6 +50,7 @@ class Prediction(Base):
 
 class FraudAlert(Base):
     __tablename__='fraud_alerts'
+    __table_args__ = (Index('ix_alerts_status_id', 'status', 'id'),)
     id=Column(Integer,primary_key=True)
     transaction_id=Column(Integer,ForeignKey('transactions.id'),unique=True,nullable=False)
     status=Column(String(30),default='open',nullable=False)
